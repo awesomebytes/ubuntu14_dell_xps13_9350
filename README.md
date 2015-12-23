@@ -14,31 +14,33 @@ The .tar.gz contains:
 
 The install script contains:
 
-    #!/bin/bash
+````bash
+#!/bin/bash
 
-	# kernel 4.4-rc6 precompiled got from
-	# wget \
-	# kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-rc6-wily/linux-headers-4.4.0-040400rc6_4.4.0-040400rc6.201512202030_all.deb \
-	# http://kernel.ubuntu.com/%7Ekernel-ppa/mainline/v4.4-rc6-wily/linux-headers-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb \
-	# http://kernel.ubuntu.com/%7Ekernel-ppa/mainline/v4.4-rc6-wily/linux-image-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb
+# kernel 4.4-rc6 precompiled got from
+# wget \
+# kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-rc6-wily/linux-headers-4.4.0-040400rc6_4.4.0-040400rc6.201512202030_all.deb \
+# http://kernel.ubuntu.com/%7Ekernel-ppa/mainline/v4.4-rc6-wily/linux-headers-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb \
+# http://kernel.ubuntu.com/%7Ekernel-ppa/mainline/v4.4-rc6-wily/linux-image-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb
 
-	# Driver for bcm4350 from http://secretundergroundla.ir/wifi-on-xps-13-9350-with-ubuntu-15-10/
+# Driver for bcm4350 from http://secretundergroundla.ir/wifi-on-xps-13-9350-with-ubuntu-15-10/
 
-	# Install linux 4.4-rc6 kernel
-	echo "Installing kernel 4.4-rc6"
-	sudo dpkg -i linux-headers-* linux-image*
+# Install linux 4.4-rc6 kernel
+echo "Installing kernel 4.4-rc6"
+sudo dpkg -i linux-headers-* linux-image*
 
-	# Install BCM4350 driver
-	echo "Installing BCM4350 driver"
-	sudo chown root:root brcmfmac4350-pcie.bin BCM-0a5c-6412.hcd
-	sudo cp BCM-0a5c-6412.hcd brcmfmac4350-pcie.bin /lib/firmware/brcm/
+# Install BCM4350 driver
+echo "Installing BCM4350 driver"
+sudo chown root:root brcmfmac4350-pcie.bin BCM-0a5c-6412.hcd
+sudo cp BCM-0a5c-6412.hcd brcmfmac4350-pcie.bin /lib/firmware/brcm/
 
-	# Add initramfs rules to load i915 and nvme drivers (or system won't start)
-	echo "Adding initramfs rules to load i915 (graphics) and nvme (SSD)"
-	sudo bash -c "echo 'i915
-	nvme' >> /etc/initramfs-tools/modules"
+# Add initramfs rules to load i915 and nvme drivers (or system won't start)
+echo "Adding initramfs rules to load i915 (graphics) and nvme (SSD)"
+sudo bash -c "echo 'i915
+nvme' >> /etc/initramfs-tools/modules"
 
-	echo "Done, now you can reboot (maybe you'll need to do it twice)".
+echo "Done, now you can reboot (maybe you'll need to do it twice)".
+````
 
 
 
