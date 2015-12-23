@@ -2,6 +2,46 @@
 
 Wifi works, bluetooth works, suspend works, audio works (with headphones too), battery life reports 7h on 100% (haven't tested it enough).
 
+The .tar.gz contains:
+
+    -rw-r--r--  1 sampfeiffer users 7.4K Dec 23 14:59 BCM-0a5c-6412.hcd
+    -rw-r--r--  1 sampfeiffer users 612K Dec 23 14:59 brcmfmac4350-pcie.bin
+    -rw-r-----  1 sampfeiffer users 2.2M Dec 22 15:00 gparted_0.24.0-1-getdeb1_amd64.deb
+    -rwxr-xr-x  1 sampfeiffer users 1.2K Dec 23 16:17 install_kernel4.4_with_wifi_and_nvme.bash
+    -rw-r--r--  1 sampfeiffer users 9.3M Dec 23 15:00 linux-headers-4.4.0-040400rc6_4.4.0-040400rc6.201512202030_all.deb
+    -rw-r--r--  1 sampfeiffer users 755K Dec 23 15:00 linux-headers-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb
+    -rw-r--r--  1 sampfeiffer users  54M Dec 23 15:00 linux-image-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb
+
+The install script contains:
+
+#!/bin/bash
+
+	# kernel 4.4-rc6 precompiled got from
+	# wget \
+	# kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-rc6-wily/linux-headers-4.4.0-040400rc6_4.4.0-040400rc6.201512202030_all.deb \
+	# http://kernel.ubuntu.com/%7Ekernel-ppa/mainline/v4.4-rc6-wily/linux-headers-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb \
+	# http://kernel.ubuntu.com/%7Ekernel-ppa/mainline/v4.4-rc6-wily/linux-image-4.4.0-040400rc6-generic_4.4.0-040400rc6.201512202030_amd64.deb
+
+	# Driver for bcm4350 from http://secretundergroundla.ir/wifi-on-xps-13-9350-with-ubuntu-15-10/
+
+	# Install linux 4.4-rc6 kernel
+	echo "Installing kernel 4.4-rc6"
+	sudo dpkg -i linux-headers-* linux-image*
+
+	# Install BCM4350 driver
+	echo "Installing BCM4350 driver"
+	sudo chown root:root brcmfmac4350-pcie.bin BCM-0a5c-6412.hcd
+	sudo cp BCM-0a5c-6412.hcd brcmfmac4350-pcie.bin /lib/firmware/brcm/
+
+	# Add initramfs rules to load i915 and nvme drivers (or system won't start)
+	echo "Adding initramfs rules to load i915 (graphics) and nvme (SSD)"
+	sudo bash -c "echo 'i915
+	nvme' >> /etc/initramfs-tools/modules"
+
+	echo "Done, now you can reboot (maybe you'll need to do it twice)".
+
+
+
 ## Prepare BIOS
 
 Go to the BIOS (press F12 on boot) > BIOS Setup
