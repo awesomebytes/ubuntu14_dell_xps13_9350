@@ -1,4 +1,6 @@
-# Install Ubuntu 14.04 on XPS 13 9350 with Broadcom 4350 card
+# Install Ubuntu 14.04 on XPS 13 9350 with Broadcom 4350 card with kernel 4.4-rc6
+
+Wifi works, bluetooth works, suspend works, audio works (with headphones too), battery life reports 7h on 100% (haven't tested it enough).
 
 ## Prepare BIOS
 
@@ -19,11 +21,16 @@ This is necessary or ubuntu won't recognize the NVME disk
     Thorough
 
 ## Get the latest Ubuntu 14.04 Live ISO and burn it to a pendrive (I use unetbootin)
-TODO: URLs
+Official ISO Image: [http://www.ubuntu.com/download/desktop](http://www.ubuntu.com/download/desktop)
+Unetbootin: [https://unetbootin.github.io/](https://unetbootin.github.io/)
 
 ## Copy my prepared package to the pendrive (anywhere)
+[https://github.com/awesomebytes/ubuntu14_dell_xps13_9350/raw/master/kernel_v4.4-rc6_with_wifi.tar.gz](https://github.com/awesomebytes/ubuntu14_dell_xps13_9350/raw/master/kernel_v4.4-rc6_with_wifi.tar.gz)
+You can also download this repo to have the instructions downloaded too:
+[https://github.com/awesomebytes/ubuntu14_dell_xps13_9350/archive/master.zip](https://github.com/awesomebytes/ubuntu14_dell_xps13_9350/archive/master.zip)
+
 It has gparted 0.24 that you will need in the live cd to be able to install the system.
-It also has kernel 4.4 and the bcm driver and a script to install all that.
+It also has kernel 4.4-rc6 and the bcm driver and a script to install all that.
 
 ## Boot the Live CD 
 Press F12 on boot and Choose:
