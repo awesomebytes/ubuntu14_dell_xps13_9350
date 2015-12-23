@@ -14,7 +14,7 @@ The .tar.gz contains:
 
 The install script contains:
 
-        #!/bin/bash
+    #!/bin/bash
 
 	# kernel 4.4-rc6 precompiled got from
 	# wget \
