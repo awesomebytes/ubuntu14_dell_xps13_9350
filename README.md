@@ -1,6 +1,8 @@
 # Install Ubuntu 14.04 on XPS 13 9350 with Broadcom 4350 card with kernel 4.4-rc6
 
-Wifi works, bluetooth works, suspend works, audio works (with headphones too), battery life reports 7h on 100% (haven't tested it enough).
+Wifi works, bluetooth works, suspend works*, audio works (with headphones too), battery life reports 7h on 100% (haven't tested it enough).
+
+*Once I went back from suspend and wifi and sound stopped working, so I wouldn't consider it totally stable. Althought is the best I could make it work.
 
 The .tar.gz contains:
 
@@ -123,7 +125,10 @@ Go to your pendrive
     ./install_kernel4.4_with_wifi_and_nvme.bash
 
 
-Reboot (maybe twice, first time the graphics sometimes don't work, dunno why) and you have wifi.
+Reboot and you have wifi.
+
+Sometimes I get a black screen on boot, to fix that follow these instructions to add nomodeset to the boot command:
+http://askubuntu.com/questions/38780/how-do-i-set-nomodeset-after-ive-already-installed-ubuntu/38782#38782
 
 Sometimes there are graphical artifacts, but after installing gnome-session-flashback (I don't like unity)
 they don't appear anymore (login with Metacity).
