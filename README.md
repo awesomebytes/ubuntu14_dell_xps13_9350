@@ -1,6 +1,15 @@
 # Install Ubuntu 14.04 on XPS 13 9350 with Broadcom 4350 card with kernel 4.4-rc6
 
-Wifi works, bluetooth works, suspend works*, audio works (with headphones too), battery life reports 7h on 100% (haven't tested it enough).
+Note: I tried 4.4-rc7 and it's the same thing, suspend fails, maybe there is some improvement in graphics (fonts are correctly renderized in some cases they weren't before). To try it for yourself just install from http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-rc7-wily/ (`sudo dpkg -i linux-*`)
+
+http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-rc7-wily/linux-headers-4.4.0-040400rc7_4.4.0-040400rc7.201512272230_all.deb
+
+http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-rc7-wily/linux-headers-4.4.0-040400rc7-generic_4.4.0-040400rc7.201512272230_amd64.deb
+
+http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-rc7-wily/linux-image-4.4.0-040400rc7-generic_4.4.0-040400rc7.201512272230_amd64.deb
+
+
+Wifi works, bluetooth works, suspend sometimes works*, audio works (with headphones too), battery life reports 7h on 100% (haven't tested it enough).
 
 *Once I went back from suspend and wifi and sound stopped working, so I wouldn't consider it totally stable. Althought is the best I could make it work.
 
