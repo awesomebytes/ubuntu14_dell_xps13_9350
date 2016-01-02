@@ -40,6 +40,7 @@ sudo cp BCM-0a5c-6412.hcd brcmfmac4350-pcie.bin /lib/firmware/brcm/
 echo "Adding initramfs rules to load i915 (graphics) and nvme (SSD)"
 sudo bash -c "echo 'i915
 nvme' >> /etc/initramfs-tools/modules"
+sudo update-initramfs -u -k all
 
 echo "Done, now you can reboot (maybe you'll need to do it twice)".
 ````
